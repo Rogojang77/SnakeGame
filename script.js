@@ -1,10 +1,10 @@
 const blockSize = 20;
 const cols = 25;
 const rows = 20;
+let board, ctx;
 let scoreDisplay = document.getElementById("score"), score = 0
 let snakeHeadX, snakeHeadY, snakeBody = [];
 let foodX, foodY;
-let board, ctx;
 let directionX = 0, directionY = 0;
 let gameActive = true;
 
@@ -18,7 +18,7 @@ window.onload = function() {
     placeFood();
     placeSnakeHead();
     document.addEventListener("keydown", changeDirection);
-    setInterval(updateCanva, 1000/10);
+    setInterval(updateCanva, 100);
 }
 
 function placeSnakeHead() {
@@ -57,10 +57,10 @@ function updateCanva() {
 
     scoreDisplay.innerHTML = "Score: " + score;
 
-    drawSnake();
+    UpdateSnake();
 }
 
-function drawSnake() {
+function UpdateSnake() {
     if(snakeHeadX == foodX && snakeHeadY == foodY) {
         snakeBody.push([foodX, foodY]);
         placeFood();
@@ -87,7 +87,7 @@ function drawSnake() {
 
 
 function gameEnd() {
-    if(snakeHeadX < 0 || snakeHeadX >= (cols * blockSize) - 10 || snakeHeadY < 0 || snakeHeadY >= (rows * blockSize) - 10) {
+    if(snakeHeadX < 0 || snakeHeadX >= (cols * blockSize) || snakeHeadY < 0 || snakeHeadY >= (rows * blockSize)) {
         gameActive = false;
     }
 
