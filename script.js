@@ -67,7 +67,7 @@ function UpdateSnake() {
         score += 1;
     }
 
-    for (let i = snakeBody.length - 1; i > 0; i--) {
+    for (let i = snakeBody.length - 1; i > 0; --i) {
         snakeBody[i] = snakeBody[i - 1];
     }
     
@@ -79,7 +79,7 @@ function UpdateSnake() {
     snakeHeadY += directionY * blockSize;
     ctx.fillStyle = "#18E16F";
     ctx.fillRect(snakeHeadX, snakeHeadY, blockSize, blockSize);
-    for (let i = 0; i < snakeBody.length; i++) {
+    for (let i = 0; i < snakeBody.length; ++i) {
         ctx.fillStyle = "#19FE7C";
         ctx.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
@@ -91,7 +91,7 @@ function gameEnd() {
         gameActive = false;
     }
 
-    for (let i = 0; i < snakeBody.length; i++) {
+    for (let i = 0; i < snakeBody.length; ++i) {
         if(snakeHeadX == snakeBody[i][0] && snakeHeadY == snakeBody[i][1]) {
             gameActive = false;
         }
