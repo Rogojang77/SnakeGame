@@ -18,7 +18,7 @@ window.onload = function() {
     placeFood();
     placeSnakeHead();
     document.addEventListener("keydown", changeDirection);
-    setInterval(updateCanva,50);
+    setInterval(updateCanva, 1000/10);
 }
 
 function placeSnakeHead() {
@@ -88,6 +88,7 @@ function drawSnake() {
 
 function gameEnd() {
     if(snakeHeadX < 0 || snakeHeadX >= (cols * blockSize) - 10 || snakeHeadY < 0 || snakeHeadY >= (rows * blockSize) - 10) {
+        gameActive = false;
     }
 
     for (let i = 0; i < snakeBody.length; i++) {
